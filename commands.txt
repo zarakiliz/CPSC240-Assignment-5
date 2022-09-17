@@ -1,0 +1,30 @@
+b geometry.cpp:8 //or 7
+b triangle.asm:28
+b geometry.cpp:12 // or 13
+r
+p/x $xmm0.v2_int64
+    //$1 = {0x4052a0, 0x4056a0}
+x/1xg $rbp
+    //0x7fffffffdf80:	0x0000000000000000
+p/d ($rbp - $rsp)/8 + 1
+    //$2 = 3
+x/12xg $rsp
+    //0x7fffffffdf70:	0x00007fffffffe070	0x0000000000000000
+    0x7fffffffdf80:	0x0000000000000000	0x00007ffff7c950b3
+    0x7fffffffdf90:	0x00007ffff7ffc620	0x00007fffffffe078
+    0x7fffffffdfa0:	0x0000000100000000	0x0000000000401337
+    0x7fffffffdfb0:	0x0000000000401390	0xbe566cc1a99a9bf0
+    0x7fffffffdfc0:	0x0000000000401080	0x00007fffffffe070
+c
+p/s (char*)&float_input
+    //0x404050 <float_input> "Please input 3 floats: "
+p/x &float_input
+    //$7 = 0x404050
+    //x/sb  0x404050 ;checking to see if this is the location
+x/1xg $rbp
+/x $xmm0.v2_int64[0]
+
+
+
+
+
